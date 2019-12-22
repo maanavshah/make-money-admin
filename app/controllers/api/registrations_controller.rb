@@ -1,7 +1,6 @@
 class Api::RegistrationsController < Api::BaseController
   skip_before_action :verify_authenticity_token, only: [:create]
 
-  respond_to :json
   def create
     user = User.new
     user.first_name = params[:first_name].presence
@@ -16,10 +15,10 @@ class Api::RegistrationsController < Api::BaseController
     end
     user.referral_code = new_referral_code
     if user.save
-      render json: 'User created successfully!', status: 201
+      render json: "User registered successfully, please confirm your email id!", status: 201
     else
       warden.custom_failure!
-      render json: { message: user.errors.full_messages }, status: 422
+      render json: user.errors.full_messages.uniq.to_sentence, status: 422
     end
   end
 end
