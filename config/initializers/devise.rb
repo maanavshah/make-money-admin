@@ -20,7 +20,7 @@ Devise.setup do |config|
   # with default "from" parameter.
 
   #TODO::Maanav:: Change this
-  config.mailer_sender = 'ramanpatil198@gmail.com'
+  config.mailer_sender = 'shah.maanav.07@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
