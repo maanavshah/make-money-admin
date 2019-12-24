@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     devise_for :users
+    get 'users/get_coins', to: 'users#get_coins'
+    get 'users/set_coins', to: 'users#set_coins'
+    get 'users/get_config', to: 'users#get_config'
   end
 end
