@@ -1,24 +1,101 @@
-# README
+# Make Money Admin
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An admin panel for make money android application.
 
-Things you may want to cover:
 
-* Ruby version
+Features
+--------
 
-* System dependencies
+- Signup/Login admin users
+- Enable/Disable any advertise platform (eg. Google Admon, Facebook ads)
+- Redeem Requests Page
+- User Block/Unblock
+- Push Notifications for user
 
-* Configuration
 
-* Database creation
+Gems
+----
 
-* Database initialization
+- Carrierwave
+- mini_magick
+- devise
+- sidekiq
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Installation
+------------
 
-* Deployment instructions
+        git clone http://www.github.com/maanavshah/make-money-admin
 
-* ...
+        cd library-management
+
+        bundle install
+
+        rake db:create
+
+        rake db:migrate
+
+        rails s
+
+
+Heroku Deployment
+-----------------
+
+https://devcenter.heroku.com/articles/getting-started-with-rails5
+
+
+1.  Login heroku
+
+        heroku login
+
+2.  Add heroku remote library-management
+
+        heroku git:remote -a make-money-admin
+
+3.  Push code heroku master
+
+        git push heroku master
+
+4.  Add postgresql addon to heroku
+
+        heroku addons:create heroku-postgresql:hobby-dev
+
+5.  Rake setup (No need for rake db:create)
+
+        heroku run rake db:migrate
+
+6.  Add environment variables GMAIL
+
+        heroku config:add GMAIL_USERNAME=usernam@email.com
+        heroku config:add GMAIL_PASSWORD=password
+
+7.  Scale Web application
+
+        heroku ps:scale web=1
+
+8.  Open website in browser
+
+        heroku open
+
+9. Check Logs
+
+        heroku logs
+        heroku logs --tail
+
+10. Bundle rails console and sidekiq
+
+        heroku run bundle exec rails c
+        heroku run bundle exec sidekiq
+
+Gem alternatives
+----------------
+
+- devise        -  JWT (authentication and authorization)
+- god           -  track sidekiq/nginx if disabled, then automatically re-enable
+- foundation    -  bootstrap
+- scss          -  sass mixin
+- carrierwave   -  ActiveStorage
+- state-machine
+- kaminari
+- turbolinks
+- jbuilder
